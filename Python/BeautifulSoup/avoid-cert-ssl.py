@@ -37,7 +37,7 @@ def get_google():
 
 
 def getPdf(url):
-    # SI HEADERS NO FUNCIONAN Y ES GET, ANULAMOS EL CERTIFICADO SSL
+    # ANULAMOS EL CERTIFICADO SSL CON VERIFY FASLE, SI HEADERS NO FUNCIONAN Y ES GET
     response = requests.get(url, verify=False)
     html = BeautifulSoup(response.content, 'html.parser')
     
