@@ -43,18 +43,8 @@ const { log } = require("console");
     } catch (error) {
       console.error("Error:", error);
     }
-    // PARA GUARDAR EN UN CSV
-    // if (title !== 'Null'){
-    //   charters.push(title);
-    //   charters.push(boatinfo);
-    //   charters.push(url);
-    //   fs.appendFile('Puppeteer/charters/results.csv', `${title},${boatinfo[0].replace('Eslora: ', '')},${boatinfo[1].replace('Manga: ', '')}, ${boatinfo[2].replace('Capacidad: ', '')},${url}\n`, (err) => {
-    //     if (err) throw err;
-    //     console.log('The "data to append" was appended to file!');
-    //   });
-    // }
 
-    // Convertir a Objeto
+    // Convertir a OBJETO. creamos diccionario y lo añadimos al array
     const boatObject = {
       title: title,
       eslora: boatinfo[0].replace("Eslora: ", ""),
@@ -66,6 +56,19 @@ const { log } = require("console");
     // Agregar el objeto del barco al array
     charters.push(boatObject);
 
+
+    
+    // PARA GUARDAR EN UN CSV
+    // if (title !== 'Null'){
+    //   charters.push(title);
+    //   charters.push(boatinfo);
+    //   charters.push(url);
+    //   fs.appendFile('Puppeteer/charters/results.csv', `${title},${boatinfo[0].replace('Eslora: ', '')},${boatinfo[1].replace('Manga: ', '')}, ${boatinfo[2].replace('Capacidad: ', '')},${url}\n`, (err) => {
+    //     if (err) throw err;
+    //     console.log('The "data to append" was appended to file!');
+    //   });
+    // }
+
     // // Esto NOO
     // charters.title = title;
     // charters.eslora = boatinfo[0];
@@ -73,6 +76,8 @@ const { log } = require("console");
     // charters.capacidad = boatinfo[2];
     // charters.url = url;
   }
+
+  // CONVERTIMOS A JSON
   const chartersJSON = JSON.stringify(charters);
 
   await charter(charters, browser, puppeteer);
